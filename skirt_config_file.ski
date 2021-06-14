@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A SKIRT parameter file created with pySkirt -->
+<skirt-simulation-hierarchy type="MonteCarloSimulation" format="9" producer="SKIRT v9.0" time="---">
+    <MonteCarloSimulation userLevel="Regular" simulationMode="NoMedium" numPackets="1e8">
+        <random type="Random">
+            <Random seed="0"/>
+        </random>
+        <units type="Units">
+            <ExtragalacticUnits fluxOutputStyle="Wavelength"/>
+        </units>
+        <cosmology type="Cosmology">
+            <LocalUniverseCosmology/>
+        </cosmology>
+        <sourceSystem type="SourceSystem">
+            <SourceSystem minWavelength="0.01 micron" maxWavelength="100 micron" wavelengths="0.55 micron" sourceBias="0.5">
+                <sources type="Source">
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="0.1 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/1.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="9.64180543743482e+37 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="1 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/2.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.85917633434463e+37 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="2 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/3.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="2.57005825895275e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="3 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/4.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="8.68709792749435e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="4 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/5.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="3.497282501942677e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="5 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/6.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.42254070931205e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="6 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/7.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="7.9047643357898e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="7 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/8.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="7.82017681784579e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="8 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/9.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.488486212170207e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="9 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/10.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="4.191626779409215e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="10 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/11.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="1.408119668976707e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="11 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/12.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="8.23521514261227e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="12 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/13.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="5.09270998187072e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="13 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/14.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="2.268075296937996e+38 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="14 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/15.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="5.63080160899068e+37 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="15 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/16.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="3.37866805924291e+37 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="16 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/17.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="2.544079508390987e+37 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="17 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/18.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="7.785393336132114e+36 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="18 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/19.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="2.848947802800666e+35 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="19 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/20.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="9.4432303480345e+32 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="20 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/21.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.609561429964282e+32 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="21 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/22.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="1.46707715532847e+30 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="22 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/23.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.194268571433235e+29 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="23 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/24.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="1.87559063566258e+27 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <geometry type="Geometry">
+                            <RingGeometry ringRadius="24 kpc" width="0.5 kpc" height="0.15 kpc"/>
+                        </geometry>
+                        <sed type="SED">
+                            <FileSED filename="../mw_zones/25.dat"/>
+                        </sed>
+                        <normalization type="LuminosityNormalization">
+                            <SpecificLuminosityNormalization wavelength="5500.0 Angstrom"
+unitStyle="wavelengthmonluminosity" specificLuminosity="6.725988174110614e+26 erg/s/Angstrom"/>
+                        </normalization>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <LogWavelengthDistribution minWavelength="0.01 micron" maxWavelength="100 micron"/>
+                        </wavelengthBiasDistribution>
+                    </GeometricSource>
+                </sources>
+            </SourceSystem>
+        </sourceSystem>
+        <instrumentSystem type="InstrumentSystem">
+            <InstrumentSystem>
+                <defaultWavelengthGrid type="WavelengthGrid">
+                    <LogWavelengthGrid minWavelength="0.01 micron" maxWavelength="10 micron" numWavelengths="100"/>
+                </defaultWavelengthGrid>
+                <instruments type="Instrument">
+<SEDInstrument instrumentName="instrument_sed" distance="1 Mpc" inclination="0 deg" azimuth="0" roll="0 deg" radius="0 pc" recordComponents="true" numScatteringLevels="0" recordPolarization="false" recordStatistics="false" />
+<FrameInstrument instrumentName="instrument_camera_fo" distance="1 Mpc" inclination="0 deg" azimuth="0" roll="0 deg" fieldOfViewX="30 kpc" numPixelsX="300" centerX="0 kpc" fieldOfViewY="30 kpc" numPixelsY="300" centerY="0 kpc" recordComponents="true" numScatteringLevels="0" recordPolarization="false" recordStatistics="false" />
+<FrameInstrument instrumentName="instrument_camera_eo" distance="1 Mpc" inclination="90 deg" azimuth="0" roll="0 deg" fieldOfViewX="30 kpc" numPixelsX="300" centerX="0 kpc" fieldOfViewY="30 kpc" numPixelsY="300" centerY="0 kpc" recordComponents="true" numScatteringLevels="0" recordPolarization="false" recordStatistics="false" />
+                </instruments>
+            </InstrumentSystem>
+        </instrumentSystem>
+    </MonteCarloSimulation>
+</skirt-simulation-hierarchy>
