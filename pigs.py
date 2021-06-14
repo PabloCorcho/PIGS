@@ -9,6 +9,7 @@ Created on Mon Jun  7 15:20:20 2021
 import importlib
 from glob import glob
 from numpy import sort
+from os import path, getcwd
 
 class SkirtFile(object):
     """
@@ -23,9 +24,11 @@ class SkirtFile(object):
         self.config_file = config_file_path                
         self.params = self.read_config()
         if output_path:        
-            self.skifile = open(output_path, 'w+')
+            output = output_path
         else:
-            self.skifile = open('skirt_config_file.ski', 'w+')
+            output = path.join(getcwd(), 'skirt_config_file.ski')
+            
+        self.skifile = open(output, 'w+')
             
         self.skifile.write(
             '<?xml version="1.0" encoding="UTF-8"?>\n<!-- A SKIRT parameter file created with pySkirt -->\n'
@@ -41,10 +44,11 @@ class SkirtFile(object):
         '    </MonteCarloSimulation>\n</skirt-simulation-hierarchy>'
                             )
 
-        
+        print('File saved at ', output)
     def read_config(self):
         cfg = importlib.import_module(self.config_file)        
         return cfg
+    
     def make_basics(self):
         self.basic_lines =  [
     '<skirt-simulation-hierarchy type="MonteCarloSimulation" format="9" producer="SKIRT v9.0" time="---">',
@@ -80,10 +84,16 @@ class SkirtFile(object):
                 ]
         
         
-        self.sources_sed_paths = sort(
-            glob(self.params.Sources['SED']['folder']+'/*'))
-        
+        # self.sources_sed_paths = glob(self.params.Sources['SED']['folder']+'/*')
+        # print(self.sources_sed_paths)
         for ii in range(self.params.Sources['n_sources']):
+            source_sed_path = path.join(self.params.Sources['SED']['folder'], 
+                                        '{}.dat'.format(ii+1))            
+            with open(source_sed_path, 'r') as f:
+                all_lines = f.readlines()                
+                norm_wavelength = float(all_lines[2][27:])
+                normalization = float(all_lines[3][9:])
+                
             self.source_lines.append(
                 '                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">'
                                      )
@@ -94,15 +104,17 @@ class SkirtFile(object):
                 self.params.Sources['Geometry']['heigh'][ii]+' '+self.params.Sources['Geometry']['units']))
             self.source_lines.append('                        </geometry>')
             self.source_lines.append('                        <sed type="SED">')
-            self.source_lines.append('                            <FileSED filename="{}"/>'.format(self.sources_sed_paths[ii]))
+            self.source_lines.append('                            <FileSED filename="{}/{}.dat"/>'.format(
+                self.params.Sources['SED']['folder'], ii+1))
             self.source_lines.append('                        </sed>')
             self.source_lines.append('                        <normalization type="{}">'.format(
                 self.params.Sources['SED']['normalization']['type']))
-            self.source_lines.append('                            <SpecificLuminosityNormalization wavelength="{}"'.format(
-                self.params.Sources['SED']['normalization']['wavelength']))
-            self.source_lines.append('unitStyle="{}" specificLuminosity="{}"/>'.format(
+            self.source_lines.append('                            <SpecificLuminosityNormalization wavelength="{} Angstrom"'.format(
+                norm_wavelength))
+            self.source_lines.append('unitStyle="{}" specificLuminosity="{} {}"/>'.format(
                 self.params.Sources['SED']['normalization']['unitStyle'],
-                self.params.Sources['SED']['normalization']['specificLuminosity']))
+                normalization,
+                self.params.Sources['SED']['normalization']['unit']))
             self.source_lines.append('                        </normalization>')
             self.source_lines.append('                        <wavelengthBiasDistribution type="{}">'.format(
                 self.params.Sources['SED']['wavelengthBiasDistribution']['type']))            
@@ -139,19 +151,7 @@ class SkirtFile(object):
             instrument_details = '<{} '.format(instrument_i['type'])
             for key_j in instrument_i_keys[1:]:
                 instrument_details += key_j+'='+'"{}" '.format(instrument_i[key_j])
-                
-            # self.inst_lines.append('                    <{} instrumentName="{}" distance="{}" inclination="{}" azimuth="{}" roll="{}" radius="{}" recordComponents="{}" numScatteringLevels="{}" recordPolarization="{}" recordStatistics="{}">'.format(
-            #     self.params.Instruments['instruments'][key_i]['type'],
-            #     self.params.Instruments['instruments'][key_i]['instrumentName'],
-            #     self.params.Instruments['instruments'][key_i]['distance'],
-            #     self.params.Instruments['instruments'][key_i]['inclination'],
-            #     self.params.Instruments['instruments'][key_i]['azimuth'],
-            #     self.params.Instruments['instruments'][key_i]['roll'],
-            #     self.params.Instruments['instruments'][key_i]['radius'],
-            #     self.params.Instruments['instruments'][key_i]['recordComponents'],
-            #     self.params.Instruments['instruments'][key_i]['numScatteringLevels'],
-            #     self.params.Instruments['instruments'][key_i]['recordPolarization'],
-            #     self.params.Instruments['instruments'][key_i]['recordStatistics'],))
+                            
             instrument_details += '/>'
             self.inst_lines.append(instrument_details)            
         
@@ -168,4 +168,5 @@ class SkirtFile(object):
 # ...
 
 if __name__ == '__main__':
-    skirtfile = SkirtFile('ski_params')
+    skirtfile = SkirtFile('ski_params', 
+                          output_path='../test1/skirt_config_file.ski')
