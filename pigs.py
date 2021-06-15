@@ -91,9 +91,9 @@ class SkirtFile(object):
                                         '{}.dat'.format(ii+1))            
             with open(source_sed_path, 'r') as f:
                 all_lines = f.readlines()                
-                norm_wavelength = float(all_lines[2][27:])
-                normalization = float(all_lines[3][9:])
-                
+                norm_wavelength = float(all_lines[2].split(' ')[3])
+                normalization = float(all_lines[3].split(' ')[2])
+                print(ii, normalization, norm_wavelength)
             self.source_lines.append(
                 '                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">'
                                      )
@@ -163,8 +163,46 @@ class SkirtFile(object):
             self.skifile.write(line+'\n')
                     
     def make_probes(self):
-        pass
-    
+        self.probe_lines = [
+            '        <probeSystem type="ProbeSystem">',
+            '            <ProbeSystem>',
+            '                <probes type="Probe">',
+            
+            ]
+        
+        for key_i in list(self.params.Probes['probes'].keys()):
+            probe_i = self.params.Probes['probes'][key_i]
+            probe_i_keys = list(probe_i.keys())            
+            probe_details = '<{} '.format(probe_i['type'])
+            print(probe_details)
+            for key_j in probe_i_keys[1:]:
+                print(key_j)
+                if key_j=='wavelengthGrid':
+                    probe_details += '>\n                        <wavelengthGrid type="WavelengthGrid">'
+                    probe_details += '\n                            <LogWavelengthGrid minWavelength="{}" maxWavelength="{}"  numWavelengths="{}" '.format(
+                        probe_i[key_j]['minWavelength'],
+                        probe_i[key_j]['maxWavelength'],
+                        probe_i[key_j]['numWavelengths']
+                        )
+                    probe_details +='/>\n                        </wavelengthGrid>'
+                    # probe_details += '{}/>'.format(probe_i['type'])
+                else:
+                    probe_details += key_j+'='+'"{}" '.format(probe_i[key_j])                            
+                    # probe_details += '/>'
+            
+            if probe_i['type']=='InstrumentWavelengthGridProbe':
+                probe_details += '/>'                
+            elif probe_i['type']=='LuminosityProbe':
+                probe_details += '\n                    </LuminosityProbe>'                            
+            self.probe_lines.append(probe_details)            
+            
+        self.probe_lines.append('                </probes>')
+        self.probe_lines.append('            </ProbeSystem>')
+        self.probe_lines.append('        </probeSystem>')            
+            
+        for line in self.probe_lines:
+            self.skifile.write(line+'\n')
+        
 # ...
 
 if __name__ == '__main__':

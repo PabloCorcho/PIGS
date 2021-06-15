@@ -114,5 +114,21 @@ Instruments['instruments']={
                          'recordStatistics':'false'}
                             }
 
-#todo: include probes
+# =============================================================================
+# PROBES
+# =============================================================================
 
+Probes = dict()
+
+Probes['probes'] = {
+    1:{'type':'InstrumentWavelengthGridProbe',
+       'probeName':'wgrids'},
+    2:{'type':'LuminosityProbe',
+       'probeName':'source_lum',
+       'wavelengthGrid':{'type':'LogWavelengthGrid',
+                         'minWavelength':'0.01 micron',
+                         'maxWavelength':'100 micron',
+                         'numWavelengths':'100'
+                         }}
+    
+    }
