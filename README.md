@@ -24,7 +24,11 @@ This can be done on a separated python script as follows:
 ```
 from pigs import SkirtFile
 
-my_skirtfile = SkirtFile('my_params_config_file_name', output='path/to/storing/folder')
+my_skirtfile = SkirtFile('my_params_config_file_name', output='path_to_folder/filename')
 ```
 
-Then a .ski file will be created with the name and location provided.
+Then a .ski file will be created with the name and location provided that can be run on command line:
+```
+cd path_to_folder/
+skirt filename
+```
