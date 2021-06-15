@@ -19,8 +19,7 @@ class SkirtFile(object):
     input: 
         - config file (name of the .py configuration file specifiying all the
                         parameters under request)
-        - output name (Name or full path of the resultant .ski file)
-    
+        - output name (Name or full path of the resultant .ski file)    
     """
     
     
