@@ -15,3 +15,16 @@ numpy
 os
 ```
 
+### Basic instructions
+
+Once all the requested parameters are included on a configuration file .py (see ski_params.py for an example) the user will have to create an SkirtFile object. 
+
+This can be done on a separated python script as follows:
+
+```
+from pigs import SkirtFile
+
+my_skirtfile = SkirtFile('my_params_config_file_name', output='path/to/storing/folder')
+```
+
+Then a .ski file will be created with the name and location provided.
