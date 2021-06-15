@@ -13,10 +13,14 @@ from os import path, getcwd
 
 class SkirtFile(object):
     """
-    This class generates basic .ski files for running SKIRT models with
-    built-in geometry configurations. 
+    This class generates a .ski file for running SKIRT models with
+    multiple built-in geometry configurations. 
     
-    input: SKIRTparams (class specifying on a given )
+    input: 
+        - config file (name of the .py configuration file specifiying all the
+                        parameters under request)
+        - output name (Name or full path of the resultant .ski file)
+    
     """
     
     
