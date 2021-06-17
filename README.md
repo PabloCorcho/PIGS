@@ -32,3 +32,12 @@ Then a .ski file will be created with the name and location provided that can be
 cd path_to_folder/
 skirt filename
 ```
+
+### Configuration files
+
+Following the SKIRT architecture the user must fill the following configuration files
+
+- sources.py (indicating the different sources of radiation)
+- medium.py (the medium could be just dust models or interstellar gas)
+- basics.py (basic parameters for running the simulation including the instruments and output probes)
+
