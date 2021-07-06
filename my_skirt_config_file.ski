@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A SKIRT parameter file created by PIGS! -->
+<skirt-simulation-hierarchy type="MonteCarloSimulation" format="9" producer="SKIRT v9.0" time="---">
+                   <MonteCarloSimulation userLevel="Expert" simulationMode="ExtinctionOnly" numPackets="1e7">
+                <random type="Random">
+                <Random seed="0"/>
+</random>                <units type="Units">
+                    <ExtragalacticUnits fluxOutputStyle="Neutral"/>
+</units>                    <cosmology type="Cosmology">
+                        <LocalUniverseCosmology/>
+</cosmology>
+<sourceSystem type="SourceSystem">
+           <SourceSystem minWavelength="0.01 micron" maxWavelength="100 micron" wavelengths="0.55 micron" sourceBias="0.5">
+                                    <sources type="Source">
+                                <PointSource positionX="0 pc" positionY="0 pc" positionZ="0 pc" velocityX="0 km/s" velocityY="0 km/s" velocityZ="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                        <angularDistribution type="AngularDistribution">
+                        <IsotropicAngularDistribution/>
+</angularDistribution>                        <polarizationProfile type="PolarizationProfile">
+                            <NoPolarizationProfile/>
+</polarizationProfile>                            <sed type="SED">
+                                <FileSED filename="../primary_source/Primary_Source_0.stab"/>
+</sed>                                <normalization type="LuminosityNormalization">
+                                    <SpecificLuminosityNormalization wavelength="0.548602 micron" unitStyle="neutralmonluminosity" specificLuminosity="0.01366859927 Lsun"/>
+</normalization>
+</PointSource>                            <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                            <geometry type="Geometry">
+                            <ShellGeometry minRadius="0.1 pc" maxRadius="20 pc" exponent="0"/>
+</geometry>                            <sed type="SED">
+                                <FileSED filename="../gas_regions/GasSource_zone1_1.stab"/>
+</sed>                                <normalization type="LuminosityNormalization">
+                                    <SpecificLuminosityNormalization wavelength="548.602 nm" unitStyle="neutralmonluminosity" specificLuminosity="1.0118408863939874e+35 erg/s"/>
+</normalization>
+</GeometricSource>                                <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                                <geometry type="Geometry">
+                                <ShellGeometry minRadius="20 pc" maxRadius="40 pc" exponent="0"/>
+</geometry>                                <sed type="SED">
+                                    <FileSED filename="../gas_regions/GasSource_zone1_2.stab"/>
+</sed>                                    <normalization type="LuminosityNormalization">
+                                        <SpecificLuminosityNormalization wavelength="548.602 nm" unitStyle="neutralmonluminosity" specificLuminosity="1.0118408863939874e+35 erg/s"/>
+</normalization>
+</GeometricSource>                                    <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                                    <geometry type="Geometry">
+                                    <ShellGeometry minRadius="40 pc" maxRadius="60 pc" exponent="0"/>
+</geometry>                                    <sed type="SED">
+                                        <FileSED filename="../gas_regions/GasSource_zone1_3.stab"/>
+</sed>                                        <normalization type="LuminosityNormalization">
+                                            <SpecificLuminosityNormalization wavelength="548.602 nm" unitStyle="neutralmonluminosity" specificLuminosity="1.0118408863939874e+35 erg/s"/>
+</normalization>
+</GeometricSource>                                        <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                                        <geometry type="Geometry">
+                                        <ShellGeometry minRadius="60 pc" maxRadius="80 pc" exponent="0"/>
+</geometry>                                        <sed type="SED">
+                                            <FileSED filename="../gas_regions/GasSource_zone1_4.stab"/>
+</sed>                                            <normalization type="LuminosityNormalization">
+                                                <SpecificLuminosityNormalization wavelength="548.602 nm" unitStyle="neutralmonluminosity" specificLuminosity="1.0118408863939874e+35 erg/s"/>
+</normalization>
+</GeometricSource>                                            <GeometricSource velocityMagnitude="0 km/s" sourceWeight="1" wavelengthBias="0.5">
+                                            <geometry type="Geometry">
+                                            <ShellGeometry minRadius="80 pc" maxRadius="100 pc" exponent="0"/>
+</geometry>                                            <sed type="SED">
+                                                <FileSED filename="../gas_regions/GasSource_zone1_5.stab"/>
+</sed>                                                <normalization type="LuminosityNormalization">
+                                                    <SpecificLuminosityNormalization wavelength="548.602 nm" unitStyle="neutralmonluminosity" specificLuminosity="1.0118408863939874e+35 erg/s"/>
+</normalization>
+</GeometricSource>
+</sources>
+</SourceSystem>
+        </sourceSystem><mediumSystem type="MediumSystem">
+                           <MediumSystem numDensitySamples="100">
+                <photonPacketOptions type="PhotonPacketOptions">
+                <PhotonPacketOptions forceScattering="True" minWeightReduction="10000.0" minScattEvents="0" pathLengthBias="0.5"/>
+</photonPacketOptions>                <extinctionOnlyOptions type="ExtinctionOnlyOptions">
+                        <ExtinctionOnlyOptions storeRadiationField="true">
+                            <radiationFieldWLG type="DisjointWavelengthGrid">
+                            <LogWavelengthGrid minWavelength="0.0001 micron" maxWavelength="1e6 micron" numWavelengths="200"/>
+</radiationFieldWLG>
+</ExtinctionOnlyOptions>
+</extinctionOnlyOptions>                    <dynamicStateOptions type="DynamicStateOptions">
+                            <DynamicStateOptions hasDynamicState="True" minIterations="1" maxIterations="10" iterationPacketsMultiplier="1">
+                                <recipes type="DynamicStateRecipe">
+                                <ClearDensityRecipe maxNotConvergedCells="0" fieldStrengthThreshold="1e9"/>
+</recipes>
+</DynamicStateOptions>
+</dynamicStateOptions>                                        <media type="Medium">
+                                        <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
+                                    <geometry type="Geometry">
+                                    <ShellGeometry minRadius="0.1 pc" maxRadius="20 pc" exponent="0"/>
+</geometry>                                    <materialMix type="MaterialMix">
+                                        <MeanFileDustMix filename="../gas_props/MeanFileDustMix_1"/>
+</materialMix>                                        <normalization type="MaterialNormalization">
+                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+</normalization>
+</GeometricMedium>                                        <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
+                                        <geometry type="Geometry">
+                                        <ShellGeometry minRadius="20 pc" maxRadius="40 pc" exponent="0"/>
+</geometry>                                        <materialMix type="MaterialMix">
+                                            <MeanFileDustMix filename="../gas_props/MeanFileDustMix_2"/>
+</materialMix>                                            <normalization type="MaterialNormalization">
+                                                <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+</normalization>
+</GeometricMedium>                                            <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
+                                            <geometry type="Geometry">
+                                            <ShellGeometry minRadius="40 pc" maxRadius="60 pc" exponent="0"/>
+</geometry>                                            <materialMix type="MaterialMix">
+                                                <MeanFileDustMix filename="../gas_props/MeanFileDustMix_3"/>
+</materialMix>                                                <normalization type="MaterialNormalization">
+                                                    <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+</normalization>
+</GeometricMedium>                                                <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
+                                                <geometry type="Geometry">
+                                                <ShellGeometry minRadius="60 pc" maxRadius="80 pc" exponent="0"/>
+</geometry>                                                <materialMix type="MaterialMix">
+                                                    <MeanFileDustMix filename="../gas_props/MeanFileDustMix_4"/>
+</materialMix>                                                    <normalization type="MaterialNormalization">
+                                                        <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+</normalization>
+</GeometricMedium>                                                    <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
+                                                    <geometry type="Geometry">
+                                                    <ShellGeometry minRadius="80 pc" maxRadius="100 pc" exponent="0"/>
+</geometry>                                                    <materialMix type="MaterialMix">
+                                                        <MeanFileDustMix filename="../gas_props/MeanFileDustMix_5"/>
+</materialMix>                                                        <normalization type="MaterialNormalization">
+                                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+</normalization>
+</GeometricMedium>
+</media>                            <grid type="SpatialGrid">
+                                        <Cylinder2DSpatialGrid maxRadius="100 pc" minZ="-100 pc" maxZ="100 pc">
+                                        <meshRadial type="Mesh">
+                                        <LinMesh numBins="200"/>
+</meshRadial>                                        <meshZ type="MoveableMesh">
+                                            <LinMesh numBins="100"/>
+</meshZ>
+</Cylinder2DSpatialGrid>
+</grid>
+</MediumSystem>
+        </mediumSystem><instrumentSystem type="InstrumentSystem">
+               <InstrumentSystem >
+                <defaultWavelengthGrid type="WavelengthGrid" >
+                <LogWavelengthGrid minWavelength="0.0001 micron" maxWavelength="1e6 micron" numWavelengths="200"/>
+</defaultWavelengthGrid>                <instruments type="Instrument" >
+                        <SEDInstrument instrumentName="ised" distance="1 Mpc" inclination="0 deg" azimuth="0" roll="0 deg" radius="0 pc" recordComponents="true" numScatteringLevels="0" recordPolarization="false" recordStatistics="false" >
+                            <wavelengthGrid type="WavelengthGrid" >
+                            <LogWavelengthGrid minWavelength="0.0001 micron" maxWavelength="1e6 micron" numWavelengths="200"/>
+</wavelengthGrid>
+</SEDInstrument>
+</instruments>
+</InstrumentSystem>
+        </instrumentSystem><probeSystem type="ProbeSystem">
+           <ProbeSystem>
+                                <probes type="Probe">
+                    <LuminosityProbe probeName="source_lum">
+                        <wavelengthGrid type="WavelengthGrid">
+                        <LogWavelengthGrid minWavelength="0.01 micron" maxWavelength="100 micron" numWavelengths="100"/>
+</wavelengthGrid>
+</LuminosityProbe>                <SpatialGridConvergenceProbe probeName="conv" wavelength="0.55 micron"/>                    <RadiationFieldAtPositionsProbe probeName="nuJnu" filename="RelevantPositions.txt" useColumns="" writeWavelengthGrid="false"/>                        <InstrumentWavelengthGridProbe probeName="grid"/>                            <RadiationFieldWavelengthGridProbe probeName="radGrid"/>
+</probes>
+</ProbeSystem>
+        </probeSystem>    </MonteCarloSimulation>
+</skirt-simulation-hierarchy>
