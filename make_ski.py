@@ -6,8 +6,10 @@ Created on Tue Jul  6 17:48:40 2021
 @author: pablo
 """
 
-import sys
-sys.path.insert(0, '../')
-import pigs
 
+from src import pigs
+
+# =============================================================================
+# Create the SKIRT .ski file
+# =============================================================================
 pigs.SkirtFile('ski_params', output_path='my_skirt_file')

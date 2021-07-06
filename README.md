@@ -110,10 +110,10 @@ This dictionary contains all the parameters relevant for writing the *Simulation
                             'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
                             'exponent': ['0']*5
                             }},
-                        'sed':{'FileSED':{'filename':get_from_folder('../gas_regions')}},
+                        'sed':{'FileSED':{'filename':get_from_folder('example_data/gas_regions')}},
                         'normalization':{'SpecificLuminosityNormalization':{
-                            'wavelength':get_norm_wavelength('../gas_regions', 'nm'),
-                            'specificLuminosity':get_norm('../gas_regions', 'erg/s')}
+                            'wavelength':get_norm_wavelength('example_data/gas_regions', 'nm'),
+                            'specificLuminosity':get_norm('example_data/gas_regions', 'erg/s')}
                                         }
                         }
 	```
@@ -136,9 +136,10 @@ This dictionary contains all the parameters relevant for writing the *Simulation
 - **Instruments**
 
 - **Probes**
+ 
+## Calling PIGS
 
-
-	
+Once the parameter file is created, simply import the `pigs` module from src and create and object `SkirtFile`. 	
 	
 	
 	

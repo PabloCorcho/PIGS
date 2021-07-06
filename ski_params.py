@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from get_sed import get_from_folder, get_norm, get_norm_wavelength, get_optdepth_norm, get_optdepth_wavelength
+from src.get_sed import get_from_folder, get_norm, get_norm_wavelength, get_optdepth_norm, get_optdepth_wavelength
 from flatten_dict import flatten, unflatten
 
 def iterate_over_dict(dictionary):
@@ -76,7 +76,7 @@ point_source['polarizationProfile'] = {'type':'PolarizationProfile',
                                        'NoPolarizationProfile':{}}
 
 point_source['sed'] = {'type':'SED',               
-                       'FileSED':{'filename':'../primary_source/Primary_Source_0.stab'}}
+                       'FileSED':{'filename':'example_data/primary_source/Primary_Source_0.stab'}}
 
 point_source['normalization'] = {'type':'LuminosityNormalization',
                        'SpecificLuminosityNormalization':{
@@ -97,10 +97,10 @@ different_properties = {'geometry':{
                             'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
                             'exponent': ['0']*5
                             }},
-                        'sed':{'FileSED':{'filename':get_from_folder('../gas_regions')}},
+                        'sed':{'FileSED':{'filename':get_from_folder('example_data/gas_regions')}},
                         'normalization':{'SpecificLuminosityNormalization':{
-                            'wavelength':get_norm_wavelength('../gas_regions', 'nm'),
-                            'specificLuminosity':get_norm('../gas_regions', 'erg/s')}
+                            'wavelength':get_norm_wavelength('example_data/gas_regions', 'nm'),
+                            'specificLuminosity':get_norm('example_data/gas_regions', 'erg/s')}
                                         }
                         }
 # example including common values (nonshared values will be filled with 'None')
@@ -189,10 +189,10 @@ different_properties = {'geometry':{
                             'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
                             'exponent': ['0']*5
                             }},
-                        'materialMix':{'MeanFileDustMix':{'filename':get_from_folder('../gas_props')}},
+                        'materialMix':{'MeanFileDustMix':{'filename':get_from_folder('example_data/gas_props')}},
                         'normalization':{'OpticalDepthMaterialNormalization':{
-                            'wavelength':get_optdepth_wavelength('../gas_props'),
-                            'opticalDepth':get_optdepth_norm('../gas_props')}
+                            'wavelength':get_optdepth_wavelength('example_data/gas_props'),
+                            'opticalDepth':get_optdepth_norm('example_data/gas_props')}
                                         }
                         }
 # example including common values (nonshared values will be filled with 'None')
