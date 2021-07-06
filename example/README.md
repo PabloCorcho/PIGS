@@ -55,7 +55,7 @@ This dictionary contains all the parameters relevant for writing the *Simulation
 	
 	- Generating sequences of source.
 	
-	It is also possible to include a set of sources that share several properties (e.g. geometrical distribution) but presenting some specific differences. In this case the code will require the user to define two dictionaries: a template source dictionary (including all the properties required for SKIRT) and a dictionary containing those properties that differ from one source to another. 
+	It is also possible to include a set of sources that share several properties (e.g. geometrical distribution) but presenting some specific differences. In this case the code will require the user to declare the number of sources and two dictionaries: a template source dictionary (including all the properties required for SKIRT) and a dictionary containing those properties that differ from one source to another. 
 	
 	For example, if we would like to model a set of sources consisting of concentric sphericall shells we must define the following *template* dictionary:
 	```
@@ -76,8 +76,43 @@ This dictionary contains all the parameters relevant for writing the *Simulation
                             }
            }
 	```
-	In this case the template items common for all the individual sources are filled with the corresponding value whereas those items that will vary are set to `None`{:.python}
+	In this case the template items common for all the individual sources are filled with the corresponding value whereas those items that will vary are set to `None`.
 	
+	Now we declare the dictionary containing the individual features. 
+	
+	```
+	n_sources = 5
+	
+	different_properties = {'geometry':{
+                            'ShellGeometry':{
+                            'minRadius': ['0.1 pc', '20 pc', '40 pc', '60 pc', '80 pc'],
+                            'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
+                            'exponent': ['0']*n_sources
+                            }},
+                        'sed':{'FileSED':{'filename':get_from_folder('../gas_regions')}},
+                        'normalization':{'SpecificLuminosityNormalization':{
+                            'wavelength':get_norm_wavelength('../gas_regions', 'nm'),
+                            'specificLuminosity':get_norm('../gas_regions', 'erg/s')}
+                                        }
+                        }
+	```
+	
+	By default, there is always one single value for each key in every dictionary, therefore the code will interpret *lists or arrays* as sets of *different sources*. 
+	
+	In addition, in this particular example the functions
+	```
+	get_from_folder('path')
+	get_norm_wavelength('path', 'units')
+	get_norm_wavelength('path', 'units')
+	```
+	are used to set the corresponding SEDs, normalization and normalization wavelength for every source within an specific folder.
+	
+	**Warning** It is important to include the kind of source (i.e. `"GeometricSource"`) at the loop responsible for including each source (line 132 of current ski_params.py).  
+	
+- **Media**
+	Similar to **Sources**
+	
+
 	
 	
 	
