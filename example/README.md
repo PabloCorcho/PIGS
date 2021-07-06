@@ -34,6 +34,14 @@ PIGS uses nested dictionaries to build the XML configuration file. WARNING: It i
 This dictionary contains all the parameters relevant for writing the *Simulation properties*. 
 
 - **Sources**
-	- Generating individual sources. When trying to generate specific sources that will consist of a single class, the user must create a dictionary containing all the properties requered for that source. As an example, here are listed the properties required for including a point-like source:
-		- "PositionX" (equal por Y and Z): spatial location of the source within the simulation (length units must be included). 
-		- 
+	- Generating individual sources. When trying to generate specific sources that will consist of a single class, the user must create a dictionary containing all the properties requered for that source. Once the dictionary is built, the user must include it to the Sources dictionary:
+	```
+	my_source = dict()
+	
+	my_source['param_i'] = 'foo'
+	
+	"""All the parameters are set...""
+	
+	Sources['SourceSystem']['sources']['KIND_OF_SOURCE NUMBER'] = my_source
+	```
+		
