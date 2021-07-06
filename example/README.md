@@ -50,6 +50,35 @@ This dictionary contains all the parameters relevant for writing the *Simulation
 	```
 	It is crucial that the keyword set for denoting this new sources corresponds to the specific kind of source according to SKIRT, followed always by a number. For example, if I would like to include a point-like source, you should use the following syntax:
 	```
-		Sources['SourceSystem']['sources']['PointSource 1'] = my_point_source
+	Sources['SourceSystem']['sources']['PointSource 1'] = my_point_source
 	```
+	
+	- Generating sequences of source.
+	
+	It is also possible to include a set of sources that share several properties (e.g. geometrical distribution) but presenting some specific differences. In this case the code will require the user to define two dictionaries: a template source dictionary (including all the properties required for SKIRT) and a dictionary containing those properties that differ from one source to another. 
+	
+	For example, if we would like to model a set of sources consisting of concentric sphericall shells we must define the following *template* dictionary:
+	```
+	shell_template = {'velocityMagnitude':'0 km/s', 'sourceWeight':"1", 'wavelengthBias':"0.5",
+           'geometry':{'type':'Geometry',
+                       'ShellGeometry':{
+                           'minRadius':None, 'maxRadius':None, 'exponent':None
+                                       }
+                      },
+           'sed':{'type':'SED',
+                  'FileSED':{'filename':None}
+                 },
+           'normalization':{'type':'LuminosityNormalization',
+                            'SpecificLuminosityNormalization':{
+                                'wavelength':None,
+                            'unitStyle':'neutralmonluminosity',
+                            'specificLuminosity': None}
+                            }
+           }
+	```
+	In this case the template items common for all the individual sources are filled with the corresponding value whereas those items that will vary are set to `None`{:.python}
+	
+	
+	
+	
 	
