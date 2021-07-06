@@ -34,14 +34,22 @@ PIGS uses nested dictionaries to build the XML configuration file. WARNING: It i
 This dictionary contains all the parameters relevant for writing the *Simulation properties*. 
 
 - **Sources**
-	- Generating individual sources. When trying to generate specific sources that will consist of a single class, the user must create a dictionary containing all the properties requered for that source. Once the dictionary is built, the user must include it to the Sources dictionary:
+	- Generating individual sources. 
+	
+	When trying to generate specific sources that will consist of a single class, the user must create a dictionary containing all the properties requered for that source. 
 	```
 	my_source = dict()
 	
 	my_source['param_i'] = 'foo'
 	
 	"""All the parameters are set...""
-	
+	```
+	Once the dictionary is built, the user must include it to the Sources dictionary within the sources nested-dict:
+	```
 	Sources['SourceSystem']['sources']['KIND_OF_SOURCE NUMBER'] = my_source
 	```
-		
+	It is crucial that the keyword set for denoting this new sources corresponds to the specific kind of source according to SKIRT, followed always by a number. For example, if I would like to include a point-like source, you should use the following syntax:
+	```
+		Sources['SourceSystem']['sources']['PointSource 1'] = my_point_source
+	```
+	
