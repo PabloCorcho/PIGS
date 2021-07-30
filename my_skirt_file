@@ -88,15 +88,15 @@
 </geometry>                                    <materialMix type="MaterialMix">
                                         <MeanFileDustMix filename="example_data/gas_props/MeanFileDustMix_1"/>
 </materialMix>                                        <normalization type="MaterialNormalization">
-                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602 nm" opticalDepth="7.634e-05"/>
 </normalization>
 </GeometricMedium>                                        <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
                                         <geometry type="Geometry">
-                                        <ShellGeometry minRadius="20 pc" maxRadius="40 pc" exponent="0"/>
+                                        <ShellGeometry minRadius="20 pc" maxRadius="48 pc" exponent="0"/>
 </geometry>                                        <materialMix type="MaterialMix">
                                             <MeanFileDustMix filename="example_data/gas_props/MeanFileDustMix_2"/>
 </materialMix>                                            <normalization type="MaterialNormalization">
-                                                <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+                                                <OpticalDepthMaterialNormalization axis="X" wavelength="548.602 nm" opticalDepth="7.634e-05"/>
 </normalization>
 </GeometricMedium>                                            <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
                                             <geometry type="Geometry">
@@ -104,7 +104,7 @@
 </geometry>                                            <materialMix type="MaterialMix">
                                                 <MeanFileDustMix filename="example_data/gas_props/MeanFileDustMix_3"/>
 </materialMix>                                                <normalization type="MaterialNormalization">
-                                                    <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+                                                    <OpticalDepthMaterialNormalization axis="X" wavelength="548.602 nm" opticalDepth="7.634e-05"/>
 </normalization>
 </GeometricMedium>                                                <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
                                                 <geometry type="Geometry">
@@ -112,7 +112,7 @@
 </geometry>                                                <materialMix type="MaterialMix">
                                                     <MeanFileDustMix filename="example_data/gas_props/MeanFileDustMix_4"/>
 </materialMix>                                                    <normalization type="MaterialNormalization">
-                                                        <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+                                                        <OpticalDepthMaterialNormalization axis="X" wavelength="548.602 nm" opticalDepth="7.634e-05"/>
 </normalization>
 </GeometricMedium>                                                    <GeometricMedium velocityMagnitude="0 km/s" magneticFieldStrength="0 uG">
                                                     <geometry type="Geometry">
@@ -120,7 +120,7 @@
 </geometry>                                                    <materialMix type="MaterialMix">
                                                         <MeanFileDustMix filename="example_data/gas_props/MeanFileDustMix_5"/>
 </materialMix>                                                        <normalization type="MaterialNormalization">
-                                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602" opticalDepth="7.634e-05"/>
+                                                            <OpticalDepthMaterialNormalization axis="X" wavelength="548.602 nm" opticalDepth="7.634e-05"/>
 </normalization>
 </GeometricMedium>
 </media>                            <grid type="SpatialGrid">

@@ -36,13 +36,14 @@ def get_norm_wavelength(path, units):
         all_wave_norms.append(norm_wavelength)
     return all_wave_norms
 
-def get_optdepth_wavelength(path):
+def get_optdepth_wavelength(path, units):
     paths = get_from_folder(path)
     all_wave_norms = []
     for path_i in paths:
         with open(path_i, 'r') as f:
                 all_lines = f.readlines()                
-                norm_wavelength = float(all_lines[4].split(' ')[3])
+                norm_wavelength = all_lines[4].split(' ')[3]
+                norm_wavelength += ' '+units
         f.close()
         all_wave_norms.append(norm_wavelength)
     return all_wave_norms
