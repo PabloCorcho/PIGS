@@ -23,10 +23,9 @@ class SkirtFile(object):
     """
     
     
-    def __init__(self, config_file_path, output_path=None):
-        self.config_file = config_file_path                
-        self.params = self.read_config()
-        
+    def __init__(self, params, output_path=None):
+        # self.config_file = config_file_path                
+        self.params = params        
         if output_path:        
             output = output_path
         else:
@@ -49,9 +48,9 @@ class SkirtFile(object):
                             )
 
         print('File saved at ', output)
-    def read_config(self):
-        cfg = importlib.import_module(self.config_file)        
-        return cfg
+    # def read_config(self):
+    #     cfg = importlib.import_module(self.config_file)        
+    #     return cfg
     
     def make_basics(self):        
         first_line = '<skirt-simulation-hierarchy type="MonteCarloSimulation" format="9" producer="SKIRT v9.0" time="---">\n'
