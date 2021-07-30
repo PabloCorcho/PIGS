@@ -191,7 +191,8 @@ different_properties = {'geometry':{
                             }},
                         'materialMix':{'MeanFileDustMix':{'filename':get_from_folder('example_data/gas_props')}},
                         'normalization':{'OpticalDepthMaterialNormalization':{
-                            'wavelength':get_optdepth_wavelength('example_data/gas_props'),
+                            'wavelength':get_optdepth_wavelength('example_data/gas_props',
+                                                                 units='nm'),
                             'opticalDepth':get_optdepth_norm('example_data/gas_props')}
                                         }
                         }
@@ -340,3 +341,13 @@ Probes['ProbeSystem'] = {
     'RadiationFieldWavelengthGridProbe 1':{'probeName':"radGrid"}                        
             }
     }       
+
+class SkiParams(object):
+    def __init__(self):
+        self.Basics = Basics
+        self.Sources = Sources
+        self.Media = Media
+        self.Instruments = Instruments
+        self.Probes = Probes
+
+    
