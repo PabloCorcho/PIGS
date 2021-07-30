@@ -8,8 +8,11 @@ Created on Tue Jul  6 17:48:40 2021
 
 
 from src import pigs
+from ski_params import SkiParams
+
 
 # =============================================================================
 # Create the SKIRT .ski file
 # =============================================================================
-pigs.SkirtFile('ski_params', output_path='my_skirt_file')
+params = SkiParams()
+pigs.SkirtFile(params, output_path='my_skirt_file')
