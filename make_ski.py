@@ -8,7 +8,7 @@ Created on Tue Jul  6 17:48:40 2021
 
 
 from src import pigs
-from ski_params import SkiParams
+from ski_params_v2 import SkiParams
 
 
 # =============================================================================
