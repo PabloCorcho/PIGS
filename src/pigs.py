@@ -27,7 +27,7 @@ class SkirtFile(object):
         # self.config_file = config_file_path                
         self.params = params        
         if output_path:        
-            output = output_path
+            output = output_path+'.ski'
         else:
             output = path.join(getcwd(), 'skirt_config_file.ski')
             
