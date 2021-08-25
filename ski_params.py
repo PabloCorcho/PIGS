@@ -76,26 +76,27 @@ point_source['polarizationProfile'] = {'type':'PolarizationProfile',
                                        'NoPolarizationProfile':{}}
 
 point_source['sed'] = {'type':'SED',               
-                       'FileSED':{'filename':'example_data/primary_source/Primary_Source_0.stab'}}
+                       'FileSED':{'filename':'input_data/primary_source/Primary_Source_0.stab'}}
 
 point_source['normalization'] = {'type':'LuminosityNormalization',
                        'SpecificLuminosityNormalization':{
                            'wavelength':'0.548602 micron',
                            'unitStyle':'neutralmonluminosity',
-                           'specificLuminosity':'0.01366859927 Lsun'}
+                           'specificLuminosity':'5.247375259612887e+31 erg/s'}
                                }
 
-Sources['SourceSystem']['sources']['PointSource 1'] = point_source
+Sources['SourceSystem']['sources']['PointSource 001'] = point_source
 
 # continuum sources (several sources sharing the same geometry)
 
-n_sources = 5
+n_sources = 15
 
+#Mario: 0.0 pc is not allowed by skirt
 different_properties = {'geometry':{
                             'ShellGeometry':{
-                            'minRadius': ['0.1 pc', '20 pc', '40 pc', '60 pc', '80 pc'],
-                            'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
-                            'exponent': ['0']*5
+                            'minRadius': ['0.01 pc','0.4 pc','0.8 pc','1.2 pc','1.6 pc','2.0 pc','2.4 pc','2.8 pc','3.2 pc','3.6 pc','4.0 pc','4.4 pc','4.8 pc','5.2 pc','5.6 pc'],
+                            'maxRadius': ['0.4 pc','0.8 pc','1.2 pc','1.6 pc','2.0 pc','2.4 pc','2.8 pc','3.2 pc','3.6 pc','4.0 pc','4.4 pc','4.8 pc','5.2 pc','5.6 pc','6.0 pc'], 
+                            'exponent': ['0']*n_sources
                             }},
                         'sed':{'FileSED':{'filename':get_from_folder('example_data/gas_regions')}},
                         'normalization':{'SpecificLuminosityNormalization':{
@@ -130,11 +131,15 @@ for ii in range(n_sources):
         while elem < len(prop_jj)-1:
             keywords.append(prop_jj[elem])            
             elem += 1
+        #print(prop_jj[-1],tuple(keywords))
         source_ii[tuple(keywords)] = prop_jj[-1][ii]
+        #Mario: If an error happens with the line above, check that you have the same number of files as n_sources
+        #       I'm not sure if dummy files are allowed because they are going to be overwritten with the correct values before needed.
                         
     source_ii = unflatten(source_ii)
     # source_ii['kind'] = kind
-    Sources['SourceSystem']['sources']['GeometricSource {}'.format(ii+1)] = source_ii
+    number_ii = str(ii+1).zfill(3)
+    Sources['SourceSystem']['sources']['GeometricSource {}'.format(number_ii)] = source_ii
     
 # =============================================================================
 # MEDIUM SYSTEM
@@ -180,19 +185,18 @@ Media['MediumSystem']['media'] = {'type':'Medium'}
 
 # continuum mediums (several mediums sharing the same geometry)
 
-n_mediums = 5
+n_media = n_sources
 
-
+#Mario: 0.0 pc is not allowed by skirt
 different_properties = {'geometry':{
                             'ShellGeometry':{
-                            'minRadius': ['0.1 pc', '20 pc', '40 pc', '60 pc', '80 pc'],
-                            'maxRadius': ['20 pc', '40 pc', '60 pc', '80 pc', '100 pc'], 
-                            'exponent': ['0']*5
+                            'minRadius': ['0.01 pc','0.4 pc','0.8 pc','1.2 pc','1.6 pc','2.0 pc','2.4 pc','2.8 pc','3.2 pc','3.6 pc','4.0 pc','4.4 pc','4.8 pc','5.2 pc','5.6 pc'],
+                            'maxRadius': ['0.4 pc','0.8 pc','1.2 pc','1.6 pc','2.0 pc','2.4 pc','2.8 pc','3.2 pc','3.6 pc','4.0 pc','4.4 pc','4.8 pc','5.2 pc','5.6 pc','6.0 pc'], 
+                            'exponent': ['0']*n_media
                             }},
                         'materialMix':{'MeanFileDustMix':{'filename':get_from_folder('example_data/gas_props')}},
                         'normalization':{'OpticalDepthMaterialNormalization':{
-                            'wavelength':get_optdepth_wavelength('example_data/gas_props',
-                                                                 units='nm'),
+                            'wavelength':get_optdepth_wavelength('example_data/gas_props','nm'),
                             'opticalDepth':get_optdepth_norm('example_data/gas_props')}
                                         }
                         }
@@ -216,7 +220,7 @@ template = {
                             }
            }
             
-for ii in range(n_mediums):            
+for ii in range(n_media):            
     medium_ii = flatten(template.copy())
     for prop_jj in iterate_over_dict(different_properties):
         elem = 0
@@ -224,10 +228,13 @@ for ii in range(n_mediums):
         while elem < len(prop_jj)-1:
             keywords.append(prop_jj[elem])            
             elem += 1
+        #print(prop_jj[-1])
         medium_ii[tuple(keywords)] = prop_jj[-1][ii]
+        #Mario: It has the same issues as sources_ii
                         
     medium_ii = unflatten(medium_ii)    
-    Media['MediumSystem']['media']['GeometricMedium {}'.format(ii+1)] = medium_ii           
+    number_ii = str(ii+1).zfill(3)
+    Media['MediumSystem']['media']['GeometricMedium {}'.format(number_ii)] = medium_ii           
   
     
 units = ' pc'    
@@ -322,9 +329,9 @@ Probes['ProbeSystem'] = {
                         'probeName':'source_lum',
                         'wavelengthGrid':{'type':'WavelengthGrid',
                          'LogWavelengthGrid':{
-                         'minWavelength':'0.01 micron',
-                         'maxWavelength':'100 micron',
-                         'numWavelengths':'100'
+                         'minWavelength':'0.1 nm',
+                         'maxWavelength':'1e6 nm',
+                         'numWavelengths':'200'
                                               }
                          }
                         },
@@ -333,14 +340,14 @@ Probes['ProbeSystem'] = {
                                      },
     'RadiationFieldAtPositionsProbe 1':{
         'probeName':"nuJnu",
-        'filename':"RelevantPositions.txt",
+        'filename':"input_data/MeanIntensity_Positions.txt",
         'useColumns':"",
         'writeWavelengthGrid':"false"
                                     },
     'InstrumentWavelengthGridProbe 1':{'probeName':"grid"},    
     'RadiationFieldWavelengthGridProbe 1':{'probeName':"radGrid"}                        
             }
-    }       
+    }    
 
 class SkiParams(object):
     def __init__(self):
@@ -348,6 +355,4 @@ class SkiParams(object):
         self.Sources = Sources
         self.Media = Media
         self.Instruments = Instruments
-        self.Probes = Probes
-
-    
+        self.Probes = Probes   
