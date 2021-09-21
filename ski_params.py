@@ -74,6 +74,7 @@ class SkiParams(object):
             # SOURCES 
             # =============================================================================
             Sources = dict()
+            n_sources_count = 0
             
             # Basic properties 
             Sources['SourceSystem'] = {
@@ -118,10 +119,11 @@ class SkiParams(object):
                                     }
             
             for ii in range(n_StellarZones):
+                n_sources_count += 1
                 translated_stellarSource = translate_dictionary(starSource_properties,ii)
                 source_ii  = translated_stellarSource[0]
                 source_key = translated_stellarSource[1]
-                number_ii = str(ii+1).zfill(3)
+                number_ii = str(n_sources_count).zfill(3)
                 Sources['SourceSystem']['sources'][(source_key+" {}").format(number_ii)] = source_ii
                 
             
@@ -158,10 +160,11 @@ class SkiParams(object):
                                     }
             
             for ii in range(n_GasSources):
+                n_sources_count += 1
                 translated_gasSource = translate_dictionary(gasSource_properties,ii)
                 source_ii  = translated_gasSource[0]
                 source_key = translated_gasSource[1]
-                number_ii = str(ii+1).zfill(3)
+                number_ii = str(n_sources_count).zfill(3)
                 Sources['SourceSystem']['sources'][(source_key+" {}").format(number_ii)] = source_ii
             
             
